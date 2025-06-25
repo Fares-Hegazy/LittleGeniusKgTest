@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Little Genius Kg</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="LittleGenius.ico" />
+</head>
+<body>
+  <div class="container">
+    <div style="text-align: center;">
+      <h1>Welcome to Little Genius Kg</h1>
+      <img src="LittleGenius.ico" alt="LittleGenius Icon" style="width:128px;height:128px;margin-top:8px;" />
+    </div>
+
+    <!-- Name input section -->
+    <div id="name-section">
+      <form id="start-form">
+        <label for="studentName">Enter your name:</label>
+        <input type="text" id="studentName" required />
+        <button type="submit">Next</button>
+      </form>
+    </div>
+
+    <!-- Homework selection with welcome -->
+    <div id="homework-selection" class="hidden">
+      <h2 id="welcome-message"></h2>
+      <label for="homeworkSelect">Select a Homework:</label>
+      <select id="homeworkSelect">
+        <option value="" disabled selected>-- Choose Homework --</option>
+        <option value="Set 1">Homework 1</option>
+      </select>
+      <button id="start-hw-btn">Start</button>
+    </div>
+
+    <!-- Quiz Section -->
+    <div id="quiz-section" class="hidden">
+      <h2 id="hw-title">Homework:</h2>
+      <div id="questions-container"></div>
+
+      <div id="score-section" class="hidden">
+        <h3 id="score-display"></h3>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
