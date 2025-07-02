@@ -52,8 +52,7 @@ function showQuestions() {
   score = 0;
   selectedAnswers = [];
   selectedTags = [];
-  const hasTags = questionsBank[selectedHomework].some(q => q.type === "Finite or Infinite" || q.type === "END Number");
-  totalPoints = hasTags ? questionsBank[selectedHomework].length * 2 : questionsBank[selectedHomework].length;
+  totalPoints = questionsBank[selectedHomework].length * 2;
   submitted = false;
 
   questionsBank[selectedHomework].forEach((q, index) => {
@@ -134,7 +133,9 @@ function handleAnswer(button, selected, question, container, index) {
       saveProgress();
       checkIfDone();
     }
-  } else if (question.type === "END Number" && isCorrect) {
+  }
+
+  if (question.type === "END Number" && isCorrect) {
     const endDiv = document.createElement("div");
     endDiv.classList.add("end-question");
     endDiv.innerHTML = `<p>What is the END?</p>`;
@@ -176,7 +177,9 @@ function handleAnswer(button, selected, question, container, index) {
 
     endDiv.appendChild(endBtn);
     container.appendChild(endDiv);
-  } else if (question.type === "END Number" && !isCorrect) {
+  }
+
+  if (question.type === "END Number" && !isCorrect) {
     const endDiv = document.createElement("div");
     endDiv.classList.add("end-question");
     endDiv.innerHTML = `<p>What is the END?</p>`;
@@ -184,17 +187,23 @@ function handleAnswer(button, selected, question, container, index) {
     const answerText = document.createElement("p");
     answerText.textContent = `Answer: ${question.end}`;
     answerText.style.marginTop = "6px";
-    endDiv.appendChild(endDiv);
+    endDiv.appendChild(answerText);
 
     container.appendChild(endDiv);
 
     selectedTags[index] = question.end;
     saveProgress();
     checkIfDone();
-  } else {
-    saveProgress();
-    checkIfDone();
   }
+
+  saveProgress();
+
+  if (!["Finite or Infinite", "END Number"].includes(question.type)) {
+  selectedTags[index] = "N/A"; // or just true
+  saveProgress();
+  checkIfDone();
+}
+
 }
 
 function saveProgress() {
@@ -212,11 +221,8 @@ function saveProgress() {
 function checkIfDone() {
   const total = questionsBank[selectedHomework].length;
   const allAnswered = selectedAnswers.filter(Boolean).length === total;
-  const hasTags = questionsBank[selectedHomework].some(q => q.type === "Finite or Infinite" || q.type === "END Number");
-  
-  if (allAnswered && (!hasTags || selectedTags.filter(val => val !== undefined).length === total)) {
-    showScore();
-  }
+  const allTagged = selectedTags.filter(val => val !== undefined).length === total;
+  if (allAnswered && allTagged) showScore();
 }
 
 function showScore() {
@@ -251,9 +257,8 @@ function displaySavedAnswers(saved) {
   container.innerHTML = "";
   selectedAnswers.length = 0;
   selectedTags.length = [];
-  score = saved.score || 0;
-  const hasTags = questionsBank[selectedHomework].some(q => q.type === "Finite or Infinite" || q.type === "END Number");
-  totalPoints = hasTags ? questionsBank[selectedHomework].length * 2 : questionsBank[selectedHomework].length;
+  score = saved.score || 0; // Use saved score
+  totalPoints = questionsBank[selectedHomework].length * 2;
   submitted = saved.submitted || false;
   console.log(`Loaded saved score: ${score}/${totalPoints}`);
 
@@ -261,7 +266,7 @@ function displaySavedAnswers(saved) {
     try {
       const ans = saved.answers[index];
       const tag = saved.tags[index];
-      console.log(`Question ${index + 1}: ans=${ans}, tag=${tag}, type=${q.type || 'None'}`);
+      console.log(`Question ${index + 1}: ans=${ans}, tag=${tag}, type=${q.type}`);
       const questionDiv = document.createElement("div");
       questionDiv.classList.add("question");
 
@@ -346,7 +351,9 @@ function displaySavedAnswers(saved) {
         }
 
         questionDiv.appendChild(tagDiv);
-      } else if (q.type === "END Number" && ans) {
+      }
+
+      if (q.type === "END Number" && ans) {
         const endDiv = document.createElement("div");
         endDiv.classList.add("end-question");
         endDiv.innerHTML = `<p>What is the END?</p>`;
@@ -391,8 +398,7 @@ function displaySavedAnswers(saved) {
           endBtn.textContent = "Enter";
           endBtn.addEventListener("click", () => {
             console.log(`Enter button clicked for question ${index + 1}, input: ${endInput.value}`);
-            const userInput = endInput.value.trim();
-            if (userInput === "") return;
+            const userInput = endInput.value.trim();            
             const isCorrectEnd = userInput === q.end;
             endBtn.disabled = true;
             endInput.disabled = true;
@@ -441,8 +447,6 @@ function displaySavedAnswers(saved) {
 
   saveProgress();
   const allAnswered = selectedAnswers.filter(Boolean).length === questionsBank[selectedHomework].length;
-  const hasTags = questionsBank[selectedHomework].some(q => q.type === "Finite or Infinite" || q.type === "END Number");
-  if (allAnswered && (!hasTags || selectedTags.filter(val => val !== undefined).length === questionsBank[selectedHomework].length)) {
-    showScore();
-  }
+  const allTagged = selectedTags.filter(val => val !== undefined).length === questionsBank[selectedHomework].length;
+  if (allAnswered && allTagged) showScore();
 }
