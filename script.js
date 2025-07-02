@@ -52,7 +52,14 @@ function showQuestions() {
   score = 0;
   selectedAnswers = [];
   selectedTags = [];
-  totalPoints = questionsBank[selectedHomework].length * 2;
+  totalPoints = 0;
+  questionsBank[selectedHomework].forEach(q => {
+    if (q.type === "Finite or Infinite" || q.type === "END Number") {
+      totalPoints += 2;
+    } else {
+      totalPoints += 1;
+    }
+  });;
   submitted = false;
 
   questionsBank[selectedHomework].forEach((q, index) => {
@@ -258,7 +265,14 @@ function displaySavedAnswers(saved) {
   selectedAnswers.length = 0;
   selectedTags.length = [];
   score = saved.score || 0; // Use saved score
-  totalPoints = questionsBank[selectedHomework].length * 2;
+  totalPoints = 0;
+  questionsBank[selectedHomework].forEach(q => {
+    if (q.type === "Finite or Infinite" || q.type === "END Number") {
+      totalPoints += 2;
+    } else {
+      totalPoints += 1;
+    }
+  });
   submitted = saved.submitted || false;
   console.log(`Loaded saved score: ${score}/${totalPoints}`);
 
