@@ -1,6 +1,6 @@
 export const set4 = [
     // Friend Number
-    { numb: 1, type: "Friend Number", question: "What is the friend number of 7?", answer: "2" },
+    { numb: 1, type: "Friend Number", question: "What is the friend number of 7?", answer: "3" },
     { numb: 2, type: "Friend Number", question: "What is the friend number of 5?", answer: "5" },
     { numb: 3, type: "Friend Number", question: "What is the friend number of 1?", answer: "9" },
     { numb: 4, type: "Friend Number", question: "What is the friend number of 6?", answer: "4" },
