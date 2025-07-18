@@ -54,8 +54,8 @@ function showQuestions() {
   selectedTags = [];
   totalPoints = 0;
   questionsBank[selectedHomework].forEach(q => {
-    if (q.type === "Finite or Infinite" || q.type === "END Number" || q.type === "Friend Number") {
-      totalPoints += 1;
+    if (q.type === "Finite or Infinite" || q.type === "END Number") {
+      totalPoints += 2;
     } else {
       totalPoints += 1;
     }
