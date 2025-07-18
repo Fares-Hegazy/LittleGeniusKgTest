@@ -42,5 +42,5 @@ export const set1 = [
     { numb: 38, type: "END Number", question: "9 + 4 =", options: ["12", "13", "14", "15"], answer: "13", end: "3" },
     { numb: 39, type: "END Number", question: "7 + 6 =", options: ["12", "13", "14", "15"], answer: "13", end: "3" },
     { numb: 40, type: "END Number", question: "6 + 9 =", options: ["14", "15", "16", "17"], answer: "15", end: "5" },
-    { numb: 41, question: "6/n7/n8/n9 =", options: ["28", "25", "30", "36"], answer: "30" }
+    { numb: 41, question: "6<br>7<br>8<br>9 =", options: ["28", "25", "30", "36"], answer: "30" }
 ];
