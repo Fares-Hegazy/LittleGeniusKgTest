@@ -1,14 +1,14 @@
 export const set4 = [
     // Friend Number
-    { numb: 1, type: "Friend Number", question: "What is the friend number of 1?", answer: "9" },
-    { numb: 2, type: "Friend Number", question: "What is the friend number of 2?", answer: "8" },
-    { numb: 3, type: "Friend Number", question: "What is the friend number of 3?", answer: "7" },
-    { numb: 4, type: "Friend Number", question: "What is the friend number of 4?", answer: "6" },
-    { numb: 5, type: "Friend Number", question: "What is the friend number of 5?", answer: "5" },
-    { numb: 6, type: "Friend Number", question: "What is the friend number of 6?", answer: "4" },
-    { numb: 7, type: "Friend Number", question: "What is the friend number of 7?", answer: "3" },
-    { numb: 8, type: "Friend Number", question: "What is the friend number of 8?", answer: "2" },
-    { numb: 9, type: "Friend Number", question: "What is the friend number of 9?", answer: "1" },
+    { numb: 1, type: "Friend Number", question: "What is the friend number of 7?", answer: "2" },
+    { numb: 2, type: "Friend Number", question: "What is the friend number of 5?", answer: "5" },
+    { numb: 3, type: "Friend Number", question: "What is the friend number of 1?", answer: "9" },
+    { numb: 4, type: "Friend Number", question: "What is the friend number of 6?", answer: "4" },
+    { numb: 5, type: "Friend Number", question: "What is the friend number of 4?", answer: "6" },
+    { numb: 6, type: "Friend Number", question: "What is the friend number of 9?", answer: "1" },
+    { numb: 7, type: "Friend Number", question: "What is the friend number of 2?", answer: "8" },
+    { numb: 8, type: "Friend Number", question: "What is the friend number of 3?", answer: "7" },
+    { numb: 9, type: "Friend Number", question: "What is the friend number of 8?", answer: "2" },
     
     // Finite or Infinite
     { numb: 10, type: "Finite or Infinite", question: "4 + 3 =", options: ["5", "6", "7", "8"], answer: "7", tag: "Finite" },
@@ -144,16 +144,5 @@ export const set4 = [
         `,
       options: ["67", "68", "69", "70"],
       answer: "68"
-    },
-    {
-      question: `
-          <div class="vertical-question">
-            <div class="row">  48</div>
-            <div class="row"><span class="op">+</span>  1</div>
-            <div class="line">_____</div>
-          </div>
-        `,
-      options: ["50", "49", "48", "47"],
-      answer: "49"
     }
 ];
