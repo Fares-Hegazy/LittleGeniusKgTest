@@ -54,12 +54,12 @@ function showQuestions() {
   selectedTags = [];
   totalPoints = 0;
   questionsBank[selectedHomework].forEach(q => {
-    if (q.type === "Finite or Infinite" || q.type === "END Number") {
-      totalPoints += 2;
+    if (q.type === "Finite or Infinite" || q.type === "END Number" || q.type === "Friend Number") {
+      totalPoints += 1;
     } else {
       totalPoints += 1;
     }
-  });;
+  });
   submitted = false;
 
   questionsBank[selectedHomework].forEach((q, index) => {
@@ -70,15 +70,58 @@ function showQuestions() {
     questionText.innerHTML = `<strong>${index + 1}.</strong><br>${q.question}`;
     questionDiv.appendChild(questionText);
 
-    q.options.forEach(option => {
-      const button = document.createElement("button");
-      button.classList.add("option-btn");
-      button.textContent = option;
-      button.addEventListener("click", () =>
-        handleAnswer(button, option, q, questionDiv, index)
-      );
-      questionDiv.appendChild(button);
-    });
+    if (q.type === "Friend Number") {
+      const friendDiv = document.createElement("div");
+      friendDiv.classList.add("friend-question");
+      friendDiv.innerHTML = `<p>Enter the friend number:</p>`;
+
+      const friendInput = document.createElement("input");
+      friendInput.type = "text";
+      friendInput.maxLength = 1;
+      friendInput.id = `friendInput-${index}`;
+      friendInput.style.width = "40px";
+      friendDiv.appendChild(friendInput);
+
+      const friendBtn = document.createElement("button");
+      friendBtn.id = `friendBtn-${index}`;
+      friendBtn.textContent = "Enter";
+      friendBtn.addEventListener("click", () => {
+        const userInput = friendInput.value.trim();
+        if (userInput === "") return;
+        const isCorrectFriend = userInput === q.answer;
+        friendBtn.disabled = true;
+        friendInput.disabled = true;
+
+        if (isCorrectFriend) {
+          friendBtn.classList.add("correct");
+          score++;
+        } else {
+          friendBtn.classList.add("incorrect");
+          const answerText = document.createElement("p");
+          answerText.textContent = `Answer: ${q.answer}`;
+          answerText.style.marginTop = "6px";
+          friendDiv.appendChild(answerText);
+        }
+
+        selectedAnswers[index] = userInput;
+        selectedTags[index] = userInput;
+        saveProgress();
+        checkIfDone();
+      });
+
+      friendDiv.appendChild(friendBtn);
+      questionDiv.appendChild(friendDiv);
+    } else if (q.options) {
+      q.options.forEach(option => {
+        const button = document.createElement("button");
+        button.classList.add("option-btn");
+        button.textContent = option;
+        button.addEventListener("click", () =>
+          handleAnswer(button, option, q, questionDiv, index)
+        );
+        questionDiv.appendChild(button);
+      });
+    }
 
     container.appendChild(questionDiv);
   });
@@ -203,14 +246,11 @@ function handleAnswer(button, selected, question, container, index) {
     checkIfDone();
   }
 
-  saveProgress();
-
-  if (!["Finite or Infinite", "END Number"].includes(question.type)) {
-  selectedTags[index] = "N/A"; // or just true
-  saveProgress();
-  checkIfDone();
-}
-
+  if (!["Finite or Infinite", "END Number", "Friend Number"].includes(question.type)) {
+    selectedTags[index] = "N/A";
+    saveProgress();
+    checkIfDone();
+  }
 }
 
 function saveProgress() {
@@ -263,12 +303,12 @@ function displaySavedAnswers(saved) {
   const container = document.getElementById("questions-container");
   container.innerHTML = "";
   selectedAnswers.length = 0;
-  selectedTags.length = [];
-  score = saved.score || 0; // Use saved score
+  selectedTags.length = 0;
+  score = saved.score || 0;
   totalPoints = 0;
   questionsBank[selectedHomework].forEach(q => {
-    if (q.type === "Finite or Infinite" || q.type === "END Number") {
-      totalPoints += 2;
+    if (q.type === "Finite or Infinite" || q.type === "END Number" || q.type === "Friend Number") {
+      totalPoints += 1;
     } else {
       totalPoints += 1;
     }
@@ -288,23 +328,82 @@ function displaySavedAnswers(saved) {
       questionText.innerHTML = `<strong>${index + 1}.</strong><br>${q.question}`;
       questionDiv.appendChild(questionText);
 
-      q.options.forEach(option => {
-        const button = document.createElement("button");
-        button.classList.add("option-btn");
-        button.textContent = option;
+      if (q.type === "Friend Number") {
+        const friendDiv = document.createElement("div");
+        friendDiv.classList.add("friend-question");
+        friendDiv.innerHTML = `<p>Enter the friend number:</p>`;
 
+        const friendInput = document.createElement("input");
+        friendInput.type = "text";
+        friendInput.maxLength = 1;
+        friendInput.id = `friendInput-${index}`;
+        friendInput.style.width = "40px";
         if (ans) {
-          button.disabled = true;
-          if (option === q.answer) button.classList.add("correct");
-          if (option === ans && option !== q.answer) button.classList.add("incorrect");
+          friendInput.value = ans;
+          friendInput.disabled = true;
+        }
+        friendDiv.appendChild(friendInput);
+
+        const friendBtn = document.createElement("button");
+        friendBtn.id = `friendBtn-${index}`;
+        friendBtn.textContent = "Enter";
+        if (ans) {
+          friendBtn.disabled = true;
+          if (ans === q.answer) friendBtn.classList.add("correct");
+          else friendBtn.classList.add("incorrect");
+          if (ans !== q.answer) {
+            const answerText = document.createElement("p");
+            answerText.textContent = `Answer: ${q.answer}`;
+            answerText.style.marginTop = "6px";
+            friendDiv.appendChild(answerText);
+          }
         } else {
-          button.addEventListener("click", () =>
-            handleAnswer(button, option, q, questionDiv, index)
-          );
+          friendBtn.addEventListener("click", () => {
+            const userInput = friendInput.value.trim();
+            if (userInput === "") return;
+            const isCorrectFriend = userInput === q.answer;
+            friendBtn.disabled = true;
+            friendInput.disabled = true;
+
+            if (isCorrectFriend) {
+              friendBtn.classList.add("correct");
+              score++;
+            } else {
+              friendBtn.classList.add("incorrect");
+              const answerText = document.createElement("p");
+              answerText.textContent = `Answer: ${q.answer}`;
+              answerText.style.marginTop = "6px";
+              friendDiv.appendChild(answerText);
+            }
+
+            selectedAnswers[index] = userInput;
+            selectedTags[index] = userInput;
+            saveProgress();
+            checkIfDone();
+          });
         }
 
-        questionDiv.appendChild(button);
-      });
+        friendDiv.appendChild(friendBtn);
+        questionDiv.appendChild(friendDiv);
+      } else if (q.options) {
+        q.options.forEach(option => {
+          const button = document.createElement("button");
+          button.classList.add("option-btn");
+          button.textContent = option;
+
+          if (ans) {
+            button.disabled = true;
+            if (option === q.answer) button.classList.add("correct");
+            if (option === ans && option !== q.answer) button.classList.add("incorrect");
+          } else {
+            button.addEventListener("click", () =>
+              handleAnswer(button, option, q, questionDiv, index)
+            );
+          }
+
+          questionDiv.appendChild(button);
+        });
+      }
 
       if (q.type === "Finite or Infinite" && ans) {
         const tagDiv = document.createElement("div");
@@ -412,7 +511,8 @@ function displaySavedAnswers(saved) {
           endBtn.textContent = "Enter";
           endBtn.addEventListener("click", () => {
             console.log(`Enter button clicked for question ${index + 1}, input: ${endInput.value}`);
-            const userInput = endInput.value.trim();            
+            const userInput = endInput.value.trim();
+            if (userInput === "") return;
             const isCorrectEnd = userInput === q.end;
             endBtn.disabled = true;
             endInput.disabled = true;
