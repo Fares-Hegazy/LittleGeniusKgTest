@@ -57,7 +57,7 @@ function showQuestions() {
     if (q.type === "Finite or Infinite" || q.type === "END Number") {
       totalPoints += 2;
     } else {
-      totalPoints += 1;
+      
     }
   });
   submitted = false;
@@ -308,7 +308,7 @@ function displaySavedAnswers(saved) {
   totalPoints = 0;
   questionsBank[selectedHomework].forEach(q => {
     if (q.type === "Finite or Infinite" || q.type === "END Number" || q.type === "Friend Number") {
-      totalPoints += 1;
+      totalPoints += 2;
     } else {
       totalPoints += 1;
     }
