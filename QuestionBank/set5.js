@@ -117,7 +117,7 @@ export const set5 = [
           <div class="line">_____</div>
         </div>
       `,
-    options: ["39", "35", "33", "31"],
+    options: ["37", "35", "33", "31"],
     answer: "37"
   },
   {
