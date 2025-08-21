@@ -99,7 +99,7 @@ button:hover {
   font-size: 28px;         /* Bigger numbers */
   line-height: 1;          /* No vertical gap between lines */
   white-space: pre;
-  text-align: left;
+  text-align: right;
   margin-bottom: 12px;
 }
 
@@ -109,4 +109,13 @@ button:hover {
   margin-top: 2px;
   width: fit-content;
   margin-left: auto;
+}
+
+.horizontal-question {
+  font-family: monospace;
+  font-size: 28px;         /* Bigger numbers */
+  line-height: 1;          /* No vertical gap between lines */
+  white-space: pre;
+  text-align: left;
+  margin-bottom: 12px;
 }
