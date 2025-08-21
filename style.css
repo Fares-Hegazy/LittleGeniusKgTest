@@ -99,7 +99,7 @@ button:hover {
   font-size: 28px;         /* Bigger numbers */
   line-height: 1;          /* No vertical gap between lines */
   white-space: pre;
-  text-align: right;
+  text-align: left;
   margin-bottom: 12px;
 }
 
