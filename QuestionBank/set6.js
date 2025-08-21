@@ -23,7 +23,7 @@ export const set6 = [
           <div class="row">2 x 8 = </div>
         </div>
       `,
-    options: ["16", "6", "9", "4"],
+    options: ["15", "17", "16", "19"],
     answer: "16"
   },
   {
@@ -41,7 +41,7 @@ export const set6 = [
           <div class="row">2 x 6 = </div>
         </div>
       `,
-    options: ["7", "4", "12", "8"],
+    options: ["11", "13", "12", "15"],
     answer: "12"
   },
   {
@@ -77,7 +77,7 @@ export const set6 = [
           <div class="row">2 x 10 = </div>
         </div>
       `,
-    options: ["5", "20", "9", "6"],
+    options: ["17", "20", "14", "18"],
     answer: "20"
   },
   {
@@ -113,7 +113,7 @@ export const set6 = [
           <div class="row">2 x 7 = </div>
         </div>
       `,
-    options: ["9", "14", "5", "3"],
+    options: ["13", "14", "11", "17"],
     answer: "14"
   },
   {
@@ -149,7 +149,7 @@ export const set6 = [
           <div class="row">2 x 5 = </div>
         </div>
       `,
-    options: ["9", "10", "6", "3"],
+    options: ["12", "10", "15", "13"],
     answer: "10"
   },
   {
@@ -167,7 +167,7 @@ export const set6 = [
           <div class="row">2 x 9 = </div>
         </div>
       `,
-    options: ["8", "3", "18", "7"],
+    options: ["15", "17", "18", "14"],
     answer: "18"
   },
   {
