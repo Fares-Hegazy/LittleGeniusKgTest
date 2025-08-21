@@ -10,7 +10,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">1 x 7 = </div>
         </div>
       `,
@@ -19,7 +19,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">2 x 8 = </div>
         </div>
       `,
@@ -28,7 +28,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">1 x 3 = </div>
         </div>
       `,
@@ -37,7 +37,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">2 x 6 = </div>
         </div>
       `,
@@ -46,7 +46,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">1 x 9 = </div>
         </div>
       `,
@@ -55,7 +55,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">2 x 1 = </div>
         </div>
       `,
@@ -64,7 +64,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">1 x 5 = </div>
         </div>
       `,
@@ -73,7 +73,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">2 x 10 = </div>
         </div>
       `,
@@ -82,7 +82,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">1 x 2 = </div>
         </div>
       `,
@@ -91,7 +91,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">2 x 4 = </div>
         </div>
       `,
@@ -100,7 +100,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">1 x 8 = </div>
         </div>
       `,
@@ -109,7 +109,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">2 x 7 = </div>
         </div>
       `,
@@ -118,7 +118,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">1 x 4 = </div>
         </div>
       `,
@@ -127,7 +127,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">2 x 2 = </div>
         </div>
       `,
@@ -136,7 +136,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">1 x 10 = </div>
         </div>
       `,
@@ -145,7 +145,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">2 x 5 = </div>
         </div>
       `,
@@ -154,7 +154,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">1 x 6 = </div>
         </div>
       `,
@@ -163,7 +163,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">2 x 9 = </div>
         </div>
       `,
@@ -172,7 +172,7 @@ export const set6 = [
   },
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">1 x 1 = </div>
         </div>
       `,
