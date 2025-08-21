@@ -1,7 +1,7 @@
 export const set6 = [
   {
     question: `
-        <div class="vertical-question">
+        <div class="horizontal-question">
           <div class="row">2 x 3 = </div>
         </div>
       `,
